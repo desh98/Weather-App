@@ -1,13 +1,14 @@
 import { BrowserRouter } from "react-router-dom";
-
-import { Login, StarsCanvas } from "./components";
+import { Login, Signup, StarsCanvas } from "./components";
+import Weather from "./components/Weather";
 
 const App = () => {
+  
   return (
     <BrowserRouter>
-      <div className='relative z-0 bg-primary h-screen'>
+      <div className='relative z-0 bg-purple-300 h-screen'>
         <div className='relative z-0'>
-          <Login />
+          <Weather />
           <StarsCanvas />
         </div>
       </div>

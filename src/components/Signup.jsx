@@ -3,10 +3,9 @@ import { motion } from "framer-motion";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
-import logo from "../assets/logo1.png"
-import Signup from "./Signup";
+import Login from "./Login";
 
-const Login = () => {
+const Signup = () => {
 
     const formRef = useRef();
     const [form, setForm] = useState({
@@ -52,7 +51,7 @@ const Login = () => {
         className='flex-[1] p-8 rounded-2xl container shadow-lg bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 text-white'
       >
         <div className="flex justify-center mb-6">
-          <h2 className="text-2xl font-bold">Login</h2>
+          <h2 className="text-2xl font-bold">SignUp</h2>
         </div>
         <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
           <label className="flex flex-col">
@@ -77,6 +76,17 @@ const Login = () => {
               required
             />
           </label>
+          <label className="flex flex-col">
+            <span className="text-white mb-2">Re-enter Password</span>
+            <input
+              type="password"
+              name="reenterPassword"
+              value={form.reenterPassword}
+              onChange={handleChange}
+              className="py-2 px-4 rounded border bg-white border-primary text-black outline-none"
+              required
+            />
+          </label>
           <button
             type="submit"
             className={`py-2 px-4 rounded border-2 mt-8 text-white font-bold ${
@@ -84,9 +94,9 @@ const Login = () => {
             }`}
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? "Signing up..." : "Signup"}
           </button>
-          <span className="text-sm text-white mt-2">Don't have an account? <a href={Signup} className="underline">Sign Up</a></span>
+          <span className="text-sm text-white mt-2">Already have an account? <a href={Login} className="underline">Login</a></span>
           
         </form>
       </motion.div>
@@ -103,4 +113,4 @@ const Login = () => {
   );
 };
 
-export default SectionWrapper(Login, "Login");
+export default SectionWrapper(Signup, "Signup");
