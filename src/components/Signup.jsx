@@ -29,15 +29,11 @@ const Signup = () => {
       e.preventDefault();
       setLoading(true);
   
-      // Simulate API call for authentication (replace this with your authentication logic)
+      
       setTimeout(() => {
         setLoading(false);
   
-        // Check credentials and redirect if successful
-        // For example, redirect to dashboard page if authentication is successful
-        // window.location.href = "/dashboard";
-  
-        // For now, just log the form data
+        
         console.log("Form submitted with data:", form);
       }, 1500); // Simulating an API call delay of 1.5 seconds
     };
@@ -45,15 +41,21 @@ const Signup = () => {
   return (
 
     <div className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
-      
+      {/* main container */}
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[1] p-8 rounded-2xl container shadow-lg bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 text-white'
       >
+        
+        {/* Header */}
         <div className="flex justify-center mb-6">
           <h2 className="text-2xl font-bold">SignUp</h2>
         </div>
-        <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
+
+        {/* Form starts here */}
+        <form ref={formRef} onSubmit={(e)=>handleSubmit(e)} className="flex flex-col gap-4">
+
+          {/* Email */}
           <label className="flex flex-col">
             <span className="text-white mb-2">Email</span>
             <input
@@ -65,6 +67,8 @@ const Signup = () => {
               required
             />
           </label>
+
+          {/* Password */}
           <label className="flex flex-col">
             <span className="text-white mb-2">Password</span>
             <input
@@ -76,6 +80,8 @@ const Signup = () => {
               required
             />
           </label>
+
+          {/* Re-enter password */}
           <label className="flex flex-col">
             <span className="text-white mb-2">Re-enter Password</span>
             <input
@@ -87,6 +93,8 @@ const Signup = () => {
               required
             />
           </label>
+
+          {/* Sign up button */}
           <button
             type="submit"
             className={`py-2 px-4 rounded border-2 mt-8 text-white font-bold ${
@@ -100,7 +108,8 @@ const Signup = () => {
           
         </form>
       </motion.div>
-
+      
+      {/* Earth canvas */}
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
         className='xl:flex-1 xl:h-auto hidden md:block h-screen'

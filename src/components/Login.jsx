@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
-import logo from "../assets/logo1.png"
 import Signup from "./Signup";
 
 const Login = () => {
