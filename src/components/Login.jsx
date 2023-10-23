@@ -3,49 +3,50 @@ import { motion } from "framer-motion";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
-import Signup from "./Signup";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
-    const formRef = useRef();
-    const [form, setForm] = useState({
-      email: "",
-      password: "",
+  const formRef = useRef();
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
     });
-  
-    const [loading, setLoading] = useState(false);
-  
-    const handleChange = (e) => {
-      const { target } = e;
-      const { name, value } = target;
-  
-      setForm({
-        ...form,
-        [name]: value,
-      });
-    };
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      setLoading(true);
-  
-      // Simulate API call for authentication (replace this with your authentication logic)
-      setTimeout(() => {
-        setLoading(false);
-  
-        // Check credentials and redirect if successful
-        // For example, redirect to dashboard page if authentication is successful
-        // window.location.href = "/dashboard";
-  
-        // For now, just log the form data
-        console.log("Form submitted with data:", form);
-      }, 1500); // Simulating an API call delay of 1.5 seconds
-    };
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const hardcodedEmail = "user@example.com";
+    const hardcodedPassword = "password123";
+
+    const enteredEmail = form.email;
+    const enteredPassword = form.password;
+
+    // Check if entered email and password match hardcoded credentials
+    if (enteredEmail === hardcodedEmail && enteredPassword === hardcodedPassword) {
+      // Successful login, navigate to weather screen
+      navigate("/weather"); // Use navigate to redirect to the weather screen
+    } else {
+      // Incorrect credentials, display error message
+      console.log("Incorrect email or password. Please try again.");
+    }
+
+    setLoading(false);
+  };
 
   return (
-
     <div className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
-      
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[1] p-8 rounded-2xl container shadow-lg bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 text-white'
@@ -85,21 +86,22 @@ const Login = () => {
           >
             {loading ? "Logging in..." : "Login"}
           </button>
-          <span className="text-sm text-white mt-2">Don't have an account? <a href={Signup} className="underline">Sign Up</a></span>
-          
+
+          <div className='gap-1 flex flex-col'>
+          <span>Email = user@example.com</span>
+          <span>Password = password123</span>
+          </div>
+
         </form>
       </motion.div>
-
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
         className='xl:flex-1 xl:h-auto hidden md:block h-screen'
       >
-        
         <EarthCanvas />
       </motion.div>
     </div>
-
   );
 };
 
-export default SectionWrapper(Login, "Login");
+export default SectionWrapper(Login, "login");

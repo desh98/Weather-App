@@ -1,23 +1,19 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login, Signup, StarsCanvas } from "./components";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
 import Weather from "./components/Weather";
 
+
 const App = () => {
-  
   return (
-    <BrowserRouter>
-      <div className='relative z-0 h-screen'>
-        <Routes>
-          <Route path="/" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/weather" element={<Weather />} />
-        </Routes>
-          
-          <StarsCanvas />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/weather" element={<Weather />} />
         
-      </div>
-    </BrowserRouter>
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

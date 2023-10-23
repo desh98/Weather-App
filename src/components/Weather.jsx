@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import background from '../assets/background.jpg';
+import { SectionWrapper } from '../hoc';
 
 
 const Weather = () => {
@@ -69,7 +69,7 @@ const Weather = () => {
 
 
   return (
-    <div className="xl:p-40 p-8 justify-center items-center flex flex-col">
+    <div className=" p-8 justify-center items-center flex flex-col">
       {/* Main container */}
       <div className="container mx-auto p-8 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 text-white">
 
@@ -121,7 +121,7 @@ const Weather = () => {
               {/* Pressure */}
               <div className="info-item mb-2 flex justify-between">
                 <span className="title font-semibold">Pressure</span>
-                <span className="value text-sm">{weatherData?.main.pressure} %</span>
+                <span className="value text-sm">{weatherData?.main.pressure} mm</span>
               </div>
 
               {/* Humidity */}
@@ -142,21 +142,21 @@ const Weather = () => {
               <ul className="week-list flex justify-between">
 
                 {/* Day 1 */}
-                <li className="day-item text-center p-4 border-black">
+                <li className="day-item text-center p-6 mr-2 rounded border-4">
                   <i className="day-icon feather text-xl mb-2" data-feather="sun"></i>
                   <h3 className="day-name text-xs font-semibold">{Forecastdata[1].dt_txt.split(" ")[0]}</h3>
                   <span className="day-temp text-sm">{Forecastdata[1]?.main.temp}°C</span>
                 </li>
 
                 {/* Day 2 */}
-                <li className="day-item text-center p-4">
+                <li className="day-item text-center p-6 border-4 mr-2">
                   <i className="day-icon feather text-xl mb-2" data-feather="cloud"></i>
                   <h3 className="day-name text-xs font-semibold">{Forecastdata[2].dt_txt.split(" ")[0]}</h3>
                   <span className="day-temp text-sm">{Forecastdata[2]?.main.temp}°C</span>
                 </li>
 
                 {/* Day 3 */}
-                <li className="day-item text-center p-4">
+                <li className="day-item text-center p-6 border-4 mr-2">
                   <i className="day-icon feather text-xl mb-2" data-feather="cloud-snow"></i>
                   <h3 className="day-name text-xs font-semibold">{Forecastdata[3].dt_txt.split(" ")[0]}</h3>
                   <span className="day-temp text-sm">{Forecastdata[3]?.main.temp}°C</span>
@@ -165,12 +165,11 @@ const Weather = () => {
             </div>
 
             {/* Show more button */}
-            <button onClick={()=>toggleShowMore(!showMore)} className="mt-4 rounded-md bg-purple-500 text-white hover:bg-purple-600 transition duration-300 ease-in-out">
-              Show more
+            <button onClick={() => toggleShowMore(!showMore)} className="mt-4 rounded-md bg-purple-500 text-white hover:bg-purple-600 transition duration-300 ease-in-out">
+              {showMore ? 'Show less' : 'Show more'}
             </button>
           </div>
         </div>
-
       </div>
 
       {/* Forecast data */}
@@ -218,7 +217,9 @@ const Weather = () => {
      }
 
     </div>
+    
   );
 };
 
-export default Weather;
+
+export default SectionWrapper(Weather, "weather");
