@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SectionWrapper } from '../hoc';
+import { StarsCanvas } from './canvas';
 
 
 const Weather = () => {
@@ -215,8 +216,9 @@ const Weather = () => {
     </div>
     ):null
      }
-
+    <div><StarsCanvas /></div>
     </div>
+    
     
   );
 };

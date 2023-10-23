@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { EarthCanvas } from "./canvas";
+import { EarthCanvas, StarsCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { useNavigate } from "react-router-dom";
@@ -100,6 +100,7 @@ const Login = () => {
       >
         <EarthCanvas />
       </motion.div>
+      <div><StarsCanvas /></div>
     </div>
   );
 };
