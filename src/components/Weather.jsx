@@ -144,21 +144,21 @@ const Weather = () => {
                 {/* Day 1 */}
                 <li className="day-item text-center p-6 mr-2 rounded border-4">
                   <i className="day-icon feather text-xl mb-2" data-feather="sun"></i>
-                  <h3 className="day-name text-xs font-semibold">{Forecastdata[1].dt_txt.split(" ")[0]}</h3>
+                  <h3 className="day-name text-xs font-semibold">{Forecastdata[1]?.dt_txt.split(" ")[0]}</h3>
                   <span className="day-temp text-sm">{Forecastdata[1]?.main.temp}°C</span>
                 </li>
 
                 {/* Day 2 */}
                 <li className="day-item text-center p-6 border-4 mr-2">
                   <i className="day-icon feather text-xl mb-2" data-feather="cloud"></i>
-                  <h3 className="day-name text-xs font-semibold">{Forecastdata[2].dt_txt.split(" ")[0]}</h3>
+                  <h3 className="day-name text-xs font-semibold">{Forecastdata[2]?.dt_txt.split(" ")[0]}</h3>
                   <span className="day-temp text-sm">{Forecastdata[2]?.main.temp}°C</span>
                 </li>
 
                 {/* Day 3 */}
                 <li className="day-item text-center p-6 border-4 mr-2">
                   <i className="day-icon feather text-xl mb-2" data-feather="cloud-snow"></i>
-                  <h3 className="day-name text-xs font-semibold">{Forecastdata[3].dt_txt.split(" ")[0]}</h3>
+                  <h3 className="day-name text-xs font-semibold">{Forecastdata[3]?.dt_txt.split(" ")[0]}</h3>
                   <span className="day-temp text-sm">{Forecastdata[3]?.main.temp}°C</span>
                 </li>
               </ul>
