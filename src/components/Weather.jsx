@@ -139,7 +139,7 @@ const Weather = () => {
 
             {/* Next three days forecast */}
             <div className="week-container p-4 bg-white rounded-lg shadow-md">
-              <ul className="week-list flex justify-between">
+              <ul className="week-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
 
                 {/* Day 1 */}
                 <li className="day-item text-center p-6 mr-2 rounded border-4">
